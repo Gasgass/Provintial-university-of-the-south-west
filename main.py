@@ -1,64 +1,94 @@
-def problema_1(base,altura):
-    #Data Analysis
-    """redondeo los valores para que no se ingresen numeros extensos al calculo del area"""
-    base = round(base, 2)
-    altura = round(altura, 2)
+def problema_1(lista):
+    for n in lista:
+        if n % 2 != 0:
+            lista.append(n + 1)
+            lista.remove(n)
+    listaPares = [n for n in lista if n % 2 == 0]
+    for n in lista:
+        if n % 2 != 0:
+            lista.append(n + 1)
+            lista.remove(n)
+    listaPares = [n for n in lista if n % 2 == 0]
+    listaPares.sort()
+    return(listaPares)
 
-    # Calculo del Area
-    area = (base * altura) / 2
-    """paso el area a un resultado absoluto para que me de un area positiva"""
-    area = abs(area)
-    area = round(area, 2)
+def problema_2(numeroSerie):
+    numeroSerie.sort()
+    a = sum(numeroSerie) / len(numeroSerie)
+    a = round(a)
 
-    return(area)
+    b = None
+    for n in numeroSerie:
+        if (b is None or n > b):
+            b = n
 
-def problema_2(lado):
-    #Data Analysis
-    """Redondeo el valor de la variable para simplificar el resultado"""
-    lado = round(lado, 2)
+    c = None
+    for n in numeroSerie:
+        if (c is None or n < c):
+            c = n
 
-    # Calculo del Area
-    """Al igual que antes redondeo el resultado y lo paso a un valor positivo"""
-    area = lado * lado
-    area = abs(area)
-    area = round(area, 2)
+    d = numeroSerie[min(range(len(numeroSerie)), key=lambda i: abs(numeroSerie[i] - a))]
 
-    return(area)
+    clave = [a, b, c, d]
+    return(clave)
 
-def problema_3(edad):
-    # Ingreso de datos
-    """A la variable mayor le otorgo un valor booleano"""
-    mayor = True
+def problema_3(palabra):
+    invertida = palabra[::-1]
+    return(invertida)
 
-    # Analisis de datos
-    """Considero que no existe una persona mayor a 110 años ni menor a 0 años"""
-    if edad >= 18 and edad <= 110:
-        mayor = True
-    elif edad < 18 or edad > 110:
-        mayor = False
+def problema_4(polinomio):
+    a = polinomio[0]
+    b = polinomio[1]
+    c = polinomio[-1]
 
-    return(mayor)
+    d = pow(b, 2) - 4 * a * c
 
-def problema_4(r,l):
-    # Ingreso de datos
-    """Redondeo y paso a su absoluto el valor del lado y del radio"""
-    l = abs(l)
-    l = round(l, 2)
-    r = abs(r)
-    r = round(r, 2)
-    """Calculo el Diametro"""
-    d = r * 2
-
-    #Data Analysis
-    """Determino con la relacion de los valores del diametro del circulo y el lado del cuadrado si entra o no uno dentro del otro """
-    entra = True
-    if d > l:
-        entra = False
-    elif d == l:
-        entra = True
-    elif d < l:
-        entra = True
+    X1 = -b + (b ** 2 - 4 * a * c) ** 0.5
+    X2 = -b - (b ** 2 - 4 * a * c) ** 0.5
+    listaRaices = []
+    if d > 0:
+        listaRaices = [X1, X2]
+    elif d == 0:
+        listaRaices = [X1]
+    elif d < 0:
+        listaRaices = []
     else:
         pass
 
-    return(entra)
+    return(listaRaices)
+
+def problema_5(clave):
+
+    cantidad = 0
+
+    for i in clave:
+        if i.isnumeric():
+            cantidad += 1
+        else:
+            pass
+
+    return (cantidad)
+
+def problema_6(lista_libros, lista_autores, eleccion):
+
+    autor_libro = lista_autores.pop(lista_libros.index(eleccion)) + " - " + eleccion
+    return(autor_libro)
+
+def problema_7(mes):
+    if mes == 1 or mes == 3 or mes == 5 or mes == 8 or mes == 7 or mes == 10 or mes == 12:
+        dias = 31
+    elif mes == 2:
+        dias = 28
+    else:
+        dias = 30
+    return(dias)
+
+
+def problema_8(texto):
+    texto_sin = texto.lower()
+
+    vocales = ["a", "á","ä", "e", "é", "ë", "i", "í", "ï", "o", "ó", "ö", "u", "ú", "ü"]
+    for n in vocales:
+        texto_sin = texto_sin.replace(n, "")
+
+    return(texto_sin)
