@@ -49,7 +49,7 @@ def problema_4(r,l):
     """Calculo el Diametro"""
     d = r * 2
 
-    # Anañisis de datos
+    #Data Analysis
     """Determino con la relacion de los valores del diametro del circulo y el lado del cuadrado si entra o no uno dentro del otro """
     entra = True
     if d > l:
