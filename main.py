@@ -1,5 +1,5 @@
 def problema_1(base,altura):
-    # Analisis de datos
+    #Data Analysis
     """redondeo los valores para que no se ingresen numeros extensos al calculo del area"""
     base = round(base, 2)
     altura = round(altura, 2)
@@ -13,7 +13,7 @@ def problema_1(base,altura):
     return(area)
 
 def problema_2(lado):
-    # Analisis de datos
+    #Data Analysis
     """Redondeo el valor de la variable para simplificar el resultado"""
     lado = round(lado, 2)
 
